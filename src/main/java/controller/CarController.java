@@ -69,8 +69,8 @@ public class CarController extends HttpServlet {
         Car car = new Car();
         car.setCarName(req.getParameter("carName"));
         car.setModeleCar(req.getParameter("modeleCar"));
-        car.setTimeArrival(req.getParameter);
-        car.setTimeDeparture(req.getParameter("timeDeparture"));
+        car.setTimeArrival
+        car.setTimeDeparture
         String carid = req.getParameter("carid");
         if (carid == null || carid.isEmpty()) {
             dao.addCar(car);

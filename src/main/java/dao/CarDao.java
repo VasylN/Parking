@@ -110,7 +110,6 @@ public class CarDao {
 
     }
 
-
     public int calculatePrice(int cacheDriverId) {
         int b = Integer.parseInt("timeArrival");
         int a = Integer.parseInt("timeDeparture");
