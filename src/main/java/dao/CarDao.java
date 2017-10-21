@@ -1,12 +1,10 @@
 package dao;
 
-import modele.Car;
+import model.Car;
 import util.DButil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,8 +34,7 @@ public class CarDao {
                 Car car = new Car();
                 car.setCarName(rs.getString("car"));
                 car.setModeleCar(rs.getString("modeleCar"));
-                car.setTimeArrival(rs.getTimestamp("timeArrival"));
-                car.setTimeDeparture(rs.getTimestamp("timeDeparture"));
+                car.setTimeArrival(rs.getString("timeArrival"));
                 car.setCarid(rs.getInt("carid"));
                 car.setDriverid(rs.getInt("driverid"));
                 cars.add(car);
@@ -51,12 +48,11 @@ public class CarDao {
     public void addCar(Car car) {
         try {
             PreparedStatement pr = connection
-                    .prepareStatement("INSERT INTO cars (car, modelecar, timearrival, timedeparture,driverid )VALUES (?,?,?,?,?)");
+                    .prepareStatement("INSERT INTO cars (car, modelecar, timearrival,driverid )VALUES (?,?,?,?)");
             pr.setString(1, car.getCarName());
             pr.setString(2, car.getModeleCar());
-            pr.setTimestamp(3, car.getTimeArrival());
-            pr.setTimestamp(4, car.getTimeDeparture());
-            pr.setInt(5, cacheDriverId);
+            pr.setString(3, car.getTimeArrival());
+            pr.setInt(4, cacheDriverId);
             pr.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -66,12 +62,11 @@ public class CarDao {
     public void updateCar(Car car) {
         try {
             PreparedStatement pr = connection
-                    .prepareStatement("UPDATE cars SET car=?,modelecar=?,timearrival=?,timedeparture=? WHERE carid=?");
+                    .prepareStatement("UPDATE cars SET car=?,modelecar=?,timearrival=? WHERE carid=?");
             pr.setString(1, car.getCarName());
             pr.setString(2, car.getModeleCar());
-            pr.setTimestamp(3, car.getTimeArrival());
-            pr.setTimestamp(4, car.getTimeDeparture());
-            pr.setInt(5, car.getCarid());
+            pr.setString(3, car.getTimeArrival());
+            pr.setInt(4, car.getCarid());
             pr.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -89,8 +84,7 @@ public class CarDao {
                 car.setDriverid(rs.getInt("driverid"));
                 car.setCarName(rs.getString("carName"));
                 car.setModeleCar(rs.getString("modeleCar"));
-                car.setTimeArrival(rs.getTimestamp("timeArrival"));
-                car.setTimeDeparture(rs.getTimestamp("timeDeparture"));
+                car.setTimeArrival(rs.getString("timeArrival"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -110,7 +104,7 @@ public class CarDao {
 
     }
 
-    public int calculatePrice(int cacheDriverId) {
+    /*public int calculatePrice(int cacheDriverId) {
         int b = Integer.parseInt("timeArrival");
         int a = Integer.parseInt("timeDeparture");
         int payment = (b - a) * 10;
@@ -129,6 +123,6 @@ public class CarDao {
             e.printStackTrace();
         }
         return payment;
-    }
+    }*/
 }
 

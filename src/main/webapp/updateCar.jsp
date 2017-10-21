@@ -15,16 +15,15 @@
 <body>
 <form method="post" action="CarController" name="formAddCar">
     Car ID : <input type="text" readonly="readonly" name="carid"
-                     value="<c:out value="${car.carid}"/>"/> <br/>
+                    value="<c:out value="${car.carid}"/>"/> <br/>
     Name : <input type="text" name="carName"
-                   value="<c:out value="${car.carName}"/>"/> <br/>
+                  value="<c:out value="${car.carName}"/>"/> <br/>
     Modele : <input type="text" name="modeleCar"
                     value="<c:out value="${car.modeleCar}"/>"/> <br/>
-    Time Arrival : <input type="text" name="timeArrival"
-                   value="<c:out value="${car.timeArrival}"/>"/> <br/>
-    Time Departure : <input type="text" name="timeDeparture"
-                     value="<c:out value="${car.timeDeparture}"/>"/> <br/>
-       <input type="submit" value="Submit">
+    Time Arrival : <input type="time" name="timeArrival"
+                          value="<c:out value="${car.timeArrival}"/>"/> <br/>
+
+    <input type="submit" value="Submit">
 </form>
 </body>
 </html>

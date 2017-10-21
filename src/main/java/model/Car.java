@@ -1,6 +1,9 @@
-package modele;
+package model;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  * Created by Pc on 21.09.2017.
@@ -10,8 +13,8 @@ public class Car {
     private int driverid;
     private String carName;
     private String modeleCar;
-    private Timestamp timeArrival;
-    private Timestamp timeDeparture;
+    private long currentTime = System.currentTimeMillis();
+    String timeArrival = new SimpleDateFormat("HH.mm").format(new Date(currentTime));
     private int payment;
     private String numberParking;
 
@@ -47,20 +50,12 @@ public class Car {
         this.modeleCar = modeleCar;
     }
 
-    public Timestamp getTimeArrival() {
+    public String getTimeArrival() {
         return timeArrival;
     }
 
-    public void setTimeArrival(Timestamp timeArrival) {
+    public void setTimeArrival(String timeArrival) {
         this.timeArrival = timeArrival;
-    }
-
-    public Timestamp getTimeDeparture() {
-        return timeDeparture;
-    }
-
-    public void setTimeDeparture(Timestamp timeDeparture) {
-        this.timeDeparture = timeDeparture;
     }
 
     public int getPayment() {
@@ -77,19 +72,5 @@ public class Car {
 
     public void setNumberParking(String numberParking) {
         this.numberParking = numberParking;
-    }
-
-    @Override
-    public String toString() {
-        return "Car{" +
-                "carid=" + carid +
-                ", driverid=" + driverid +
-                ", carName='" + carName + '\'' +
-                ", modeleCar='" + modeleCar + '\'' +
-                ", timeArrival=" + timeArrival +
-                ", timeDeparture=" + timeDeparture +
-                ", payment=" + payment +
-                ", numberParking='" + numberParking + '\'' +
-                '}';
     }
 }

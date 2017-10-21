@@ -20,7 +20,6 @@
         <th>Car Name</th>
         <th>Car Modele</th>
         <th>Time Arrival</th>
-        <th>Time Departure</th>
         <th>Payment</th>
         <th>Number Parking</th>
         <th colspan="2">Action</th>
@@ -33,7 +32,6 @@
             <td><c:out value="${car.carName}"/></td>
             <td><c:out value="${car.modeleCar}"/></td>
             <td><c:out value="${car.timeArrival}"/></td>
-            <td><c:out value="${car.timeDeparture}"/></td>
             <td><c:out value="${car.payment}"/></td>
             <td><c:out value="${car.numberParking}"/></td>
             <td><a href="CarController?action=edit&carid=<c:out value="${car.carid}"/>">Update</a></td>

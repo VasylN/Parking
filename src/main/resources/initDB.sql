@@ -6,9 +6,8 @@ DROP SEQUENCE IF EXISTS global_se9;
 
 CREATE SEQUENCE global_se8 START 10000;
 CREATE SEQUENCE global_se9 START 10000;
-/*
-CREATE SEQUENCE global_se111 START 01;
-*/
+/*CREATE SEQUENCE global_se111 START 01;*/
+
 
 CREATE TABLE userscars(
   driverid INTEGER PRIMARY KEY DEFAULT nextval('global_se8'),
@@ -22,8 +21,6 @@ CREATE TABLE cars(
   driverid INTEGER NOT NULL,
   car VARCHAR NOT NULL,
   modeleCar VARCHAR NOT NULL,
-  timeArrival TIMESTAMP,
-  timeDeparture TIMESTAMP,
-  /*payment INTEGER NULL,*/
+  timeArrival VARCHAR,
   numberParking INTEGER DEFAULT nextval('global_se111')
 );

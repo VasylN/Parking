@@ -1,7 +1,7 @@
 package controller;
 
 import dao.CarDao;
-import modele.Car;
+import model.Car;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  * Created by Pc on 21.09.2017.
@@ -48,14 +50,14 @@ public class CarController extends HttpServlet {
             forward = LIST_CAR;
             int driverid = Integer.parseInt(req.getParameter("driverid"));
             req.setAttribute("cars", dao.getCarsByDriverId(driverid));
-        } else if (action.equalsIgnoreCase("calculate")) {
+        /*} else if (action.equalsIgnoreCase("calculate")) {
             forward = CalculatePrice;
             int payment = Integer.parseInt(req.getParameter("payment"));
-            /*int driverid = Integer.parseInt(req.getParameter("driverid"));
+            *//*int driverid = Integer.parseInt(req.getParameter("driverid"));
             int timeArrival = Integer.parseInt(req.getParameter("timeArrival"));
             int timeDeparture = Integer.parseInt(req.getParameter("timeDeparture"));
-            int payment = (timeDeparture - timeArrival) * PRICE;*/
-            req.setAttribute("payment", dao.calculatePrice(payment));
+            int payment = (timeDeparture - timeArrival) * PRICE;*//*
+            req.setAttribute("payment", dao.calculatePrice(payment));*/
         } else {
             forward = UPDATE_CAR;
         }
@@ -69,9 +71,9 @@ public class CarController extends HttpServlet {
         Car car = new Car();
         car.setCarName(req.getParameter("carName"));
         car.setModeleCar(req.getParameter("modeleCar"));
-        car.setTimeArrival
-        car.setTimeDeparture
-        String carid = req.getParameter("carid");
+        car.setTimeArrival(req.getParameter("timeArrival"));
+                String carid = req.getParameter("carid");
+
         if (carid == null || carid.isEmpty()) {
             dao.addCar(car);
         } else {
@@ -82,5 +84,6 @@ public class CarController extends HttpServlet {
         req.setAttribute("cars", dao.getCarsByDriverId(0));
         requestDispatcher.forward(req, resp);
     }
+
 }
 

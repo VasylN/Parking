@@ -1,7 +1,7 @@
 package controller;
 
 import dao.DriverDao;
-import modele.Driver;
+import model.Driver;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

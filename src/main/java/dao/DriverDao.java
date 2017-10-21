@@ -1,6 +1,6 @@
 package dao;
 
-import modele.Driver;
+import model.Driver;
 import util.DButil;
 
 import java.sql.*;
